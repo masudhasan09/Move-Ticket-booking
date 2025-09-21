@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Movie Seat Booking</title>
+  </head>
+  <body>
+    <!-- This container will show when the user is logged out -->
+    <div id="auth-container">
+      <h1>Welcome to Movie Seat Booker</h1>
+      <p>Please login or register to continue</p>
+      <div class="auth-buttons">
+        <button id="login-btn" class="btn">Login</button>
+        <button id="register-btn" class="btn">Register</button>
+      </div>
+    </div>
+
+    <!-- This main content will show when the user is logged in -->
+    <div id="main-content" class="hidden">
+      <header class="main-header">
+        <div id="user-info">
+          Welcome, <span id="username-display"></span>!
+        </div>
+        <button id="logout-btn" class="auth-btn">Logout</button>
+      </header>
+
+      <h2>Pick a movie</h2>
+      <div class="movie-gallery">
+        <div class="movie" data-price="10">
+          <img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg" alt="Avengers: Endgame">
+          <div class="movie-info">
+            <h5>Avengers: Endgame</h5>
+            <span>$10</span>
+          </div>
+        </div>
+        <div class="movie" data-price="12">
+          <img src="https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg" alt="Joker">
+           <div class="movie-info">
+            <h5>Joker</h5>
+            <span>$12</span>
+          </div>
+        </div>
+        <div class="movie" data-price="8">
+          <img src="https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg" alt="Toy Story 4">
+           <div class="movie-info">
+            <h5>Toy Story 4</h5>
+            <span>$8</span>
+          </div>
+        </div>
+        <div class="movie" data-price="9">
+          <img src="https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg" alt="The Lion King">
+           <div class="movie-info">
+            <h5>The Lion King</h5>
+            <span>$9</span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="showcase">
+        <li>
+          <div class="seat"></div>
+          <small>N/A</small>
+        </li>
+        <li>
+          <div class="seat selected"></div>
+          <small>Selected</small>
+        </li>
+        <li>
+          <div class="seat occupied"></div>
+          <small>Occupied</small>
+        </li>
+      </ul>
+
+      <div class="container">
+        <div class="screen"></div>
+
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+        </div>
+        <div class="row">
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat"></div>
+        </div>
+      </div>
+
+      <p class="text">
+        You have selected <span id="count">0</span> seats for a price of $<span
+          id="total"
+          >0</span
+        >
+      </p>
+      <button id="confirm-btn" class="btn">Confirm Booking</button>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Login</h2>
+        <form id="login-form">
+          <input type="text" id="login-username" placeholder="Username" required />
+          <input type="password" id="login-password" placeholder="Password" required />
+          <button type="submit" class="btn">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Register</h2>
+        <form id="register-form">
+          <input type="text" id="register-username" placeholder="Username" required />
+          <input type="password" id="register-password" placeholder="Password" required />
+          <button type="submit" class="btn">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
